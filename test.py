@@ -4,9 +4,10 @@ import asyncio
 
 async def main():
     agent = Agent(
-        task="Search for 'browser-use github' on Google and tell me the first result",
+        task="Tell me how many github stars 'browser-use' has -- note that you might encounter cookie policy popups - just accept them to continue",
         llm=ChatOpenAI(model="gpt-4o"),
     )
+    
     result = await agent.run()
     print(result)
 
