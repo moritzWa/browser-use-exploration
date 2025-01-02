@@ -16,7 +16,12 @@ async def process_company(company, llm):
     
     agent = Agent(task=task, llm=llm)
     result = await agent.run()
-    return result
+    
+    # Extract only the relevant part of the result
+    final_result = result.final_result()
+    if final_result:
+        return final_result
+    return "No relevant data found."
 
 async def main():
     print("Please enter the list of companies (one per line).")
