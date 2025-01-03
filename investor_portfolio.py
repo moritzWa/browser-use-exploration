@@ -9,9 +9,9 @@ async def process_company(company, llm):
     3. For each founder identified, search Google for "[Founder Name] [Company Name] LinkedIn" and "[Founder Name] [Company Name] Twitter"
     4. Extract their LinkedIn and Twitter/X profile URLs from the search results
     5. Format the output as a bullet-point list with:
-       - Company name
-       - Founder name(s)
-       - Their social links (LinkedIn, Twitter/X)
+       - [Company name]
+         - [Founder name(s)]
+           - [Their social links (LinkedIn, Twitter/X)]
     """
     
     agent = Agent(task=task, llm=llm)
