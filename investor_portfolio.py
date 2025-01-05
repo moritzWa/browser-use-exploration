@@ -18,22 +18,23 @@ async def process_company(company, llm):
     2. From the search results, identify the founders' names
     3. For each founder identified:
         a. Search Google for "[Founder Name] [Company Name] LinkedIn"
-        b. Click on the actual LinkedIn profile link (it must start with 'https://www.linkedin.com/in/')
-        c. Copy the EXACT LinkedIn profile URL from the browser's address bar
-        d. Search Google for "[Founder Name] [Company Name] Twitter"
-        e. Click on the actual Twitter/X profile link (it must start with 'https://twitter.com/' or 'https://x.com/')
-        f. Copy the EXACT Twitter/X profile URL from the browser's address bar
+        b. From the search results, find and extract the LinkedIn profile URL (must start with 'https://www.linkedin.com/in/')
+           DO NOT click or open the link - just extract it from the search results
+        c. Search Google for "[Founder Name] [Company Name] Twitter"
+        d. From the search results, find and extract the Twitter/X profile URL (must start with 'https://twitter.com/' or 'https://x.com/')
+           DO NOT click or open the link - just extract it from the search results
     4. Format the output as a bullet-point list with:
        - Company name
          - Founder name
-           - LinkedIn: [exact URL from browser]
-           - Twitter/X: [exact URL from browser]
-    5. If a profile cannot be found, write "Profile not found" instead of a fake URL.
+           - LinkedIn: [URL from search results]
+           - Twitter/X: [URL from search results]
+    5. If a profile URL cannot be found in search results, write "Profile not found" instead.
     
     IMPORTANT: 
-    - Do NOT create or guess URLs
-    - Only use URLs directly copied from the browser's address bar
-    - Verify each URL is valid before including it
+    - Extract URLs directly from the search results
+    - DO NOT click or open the profile links
+    - Only use URLs that match the correct format (linkedin.com/in/ or twitter.com/ or x.com/)
+    - Do not create or guess URLs
     """
     
     agent = Agent(task=task, llm=llm)
